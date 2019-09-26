@@ -13,7 +13,34 @@
     <% flash.each do |key, value| %>
       <div class="alert alert-<%= key %>" role="alert"><%= value %></div>
     <% end %>
-    
+    <header>
+      <div class="header-logo">
+        <%= link_to("Oekakilog", root_path) %>
+      </div>
+      <ul class="header-menus">
+        <% if current_user %>
+          <li>
+            <%= current_user.name %>
+          </li>
+          <li>
+            <%= "イラスト投稿" %>
+          </li>
+          <li>
+            <%= "イラスト一覧" %>
+          </li>
+          <li>
+            <%= link_to("ログアウト", logout_path, {method: :delete}) %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to("ログイン", sessions_new_path) %>
+          </li>
+          <li>
+            <%= link_to("新規登録", new_user_path) %>
+          </li>
+        <% end %>  
+      </ul>
+    </header>
   
     <%= yield %>
     

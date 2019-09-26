@@ -77,28 +77,54 @@ h1, h2 {
 }
 
 header {
-	height: 90px; 
+	height: 64px; 
+	position: absolute;
+	z-index: 1;
 	width: 100%; 
-	background-color: rgba(0,59,128,0.8);
+	background-color: #3c388f;
+}
+ 
+.header-logo {
+	float: left; 
+	padding-left: 20px; 
+	color: white;
+	font-size: 32px;
+	line-height: 64px;
+}
+ 
+.header-logo a{
 	color: white; 
 }
  
-header p {
-	line-height: 100px;
-	float: left; 
-	font-size: 30px; 
-	margin-left: 80px; 
+.header-menus {
+	float: right; 
+  padding-right: 20px;
 }
- 
-header nav {
-	float: left; 
-	margin-left: 800px; 
+
+.header-menus li {
+  float: left;
+  list-style-type: none;
+  line-height: 64px;
+  font-size: 17px;
+  color: white;
+  padding-left: 15px;
 }
- 
-header li {
-	line-height: 100px; 
-	float: left; 
-	margin-left: 30px;
-	list-style: none; 
-	font-size: 20px;
+
+.header-menus a {
+  float: left;
+  font-size: 17px;
+  color: white;
+}
+
+.header-menus .fa {
+  padding-right: 5px;
+}
+
+.header-menus input[type="submit"] {
+  padding: 0 20px;
+  float:left;
+  line-height: 64px;
+  color: white;
+  margin: 0;
+  font-size: 13px;
 }
