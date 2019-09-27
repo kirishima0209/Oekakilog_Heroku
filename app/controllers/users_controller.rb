@@ -6,12 +6,24 @@ class UsersController < ApplicationController
   def create
     #binding.pry
     @user = User.new(user_params)
+    @user.image_url = "人物アイコン.jpeg"
     if @user.save
       redirect_to root_path, success: '登録が完了しました'
     else
       flash.now[:danger] = "登録に失敗しました"
       render :new
     end  
+  end  
+  
+  def show
+    @user = User.find_by(id: params[:id])
+  end  
+  
+  def edit
+    @user = User.find_by(id: params[:id])
+  end  
+  
+  def update
   end  
   
   private

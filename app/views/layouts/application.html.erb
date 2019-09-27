@@ -20,7 +20,7 @@
       <ul class="header-menus">
         <% if current_user %>
           <li>
-            <%= current_user.name %>
+            <%= link_to(current_user.name, user_path(current_user) ) %>
           </li>
           <li>
             <%= "イラスト投稿" %>
