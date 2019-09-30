@@ -6,28 +6,39 @@ class UsersController < ApplicationController
   def create
     #binding.pry
     @user = User.new(user_params)
-    @user.image_url = "人物アイコン.jpeg"
+    @user.image = "人物アイコン.jpeg"
     if @user.save
       redirect_to root_path, success: '登録が完了しました'
     else
       flash.now[:danger] = "登録に失敗しました"
       render :new
-    end  
+    end
   end  
   
   def show
-    @user = User.find_by(id: params[:id])
+    @user = User.find(params[:id])
+    #binding.pry
   end  
   
   def edit
-    @user = User.find_by(id: params[:id])
+    @user = User.find(params[:id])
   end  
   
   def update
+    @user = User.find(params[:id])
+    #binding.pry
+    if @user.update(user_params)
+      redirect_to user_path(@user)
+      flash[:success] = 'ユーザー情報を編集しました。'
+    else
+      #binding.pry
+      flash.now[:danger] = 'ユーザー情報の編集に失敗しました。'
+      render :edit
+    end  
   end  
   
   private
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :image)
   end  
 end

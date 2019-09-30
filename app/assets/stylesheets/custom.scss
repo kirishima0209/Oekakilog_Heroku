@@ -159,9 +159,9 @@ header {
   height: 80px;
   border-radius: 40%;
   box-shadow: 0 2px 6px #c1ced7;
-  margin: 20px 0 10px;
   object-fit: cover;
-  margin: auto;
+  display: block;
+  margin: 0 auto;
 }  
 
 .user h2 {

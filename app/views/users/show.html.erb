@@ -2,7 +2,11 @@
   <div class="container">
     <div class="user">
       <div class="img">
-        <%= image_tag @user.image_url %>
+      　<% if @user.image? %>
+    　　　　<%= image_tag @user.image.url %>
+    　　<% else %>
+    　　  <%= image_tag "/assets/人物アイコン.jpeg" %>
+　　　　<% end %>
       </div>  
       <h2><%= @user.name %></h2>
       <p><%= @user.email %></p>
