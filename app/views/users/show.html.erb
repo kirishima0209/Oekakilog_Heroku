@@ -10,7 +10,9 @@
       </div>  
       <h2><%= @user.name %></h2>
       <p><%= @user.email %></p>
-      <%= link_to("編集", edit_user_path(current_user)) %>
+      <%= link_to("編集", edit_user_path(current_user)) %><br>
+      <%= link_to 'ユーザーを削除', user_path(current_user), method: :delete, data:
+      { confirm: '本当にユーザーを削除しますか?' } %>
     </div>
   </div>
 </div>

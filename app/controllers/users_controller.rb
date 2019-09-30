@@ -37,6 +37,14 @@ class UsersController < ApplicationController
     end  
   end  
   
+  def destroy
+    @user = User.find_by(id: params[:id])
+    #binding.pry
+    @user.destroy
+    flash[:success] = "ユーザーを削除しました"
+    redirect_to root_path
+  end  
+  
   private
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :image)

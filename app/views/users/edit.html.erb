@@ -21,7 +21,6 @@
             <%= f.label :ユーザー画像, class: "text-white" %>
             <%= f.file_field :image, class: "form-control" %>
           </div>
-          <%= f.hidden_field :password, :value => @user.password %>
           <%= f.submit "保存", class: "btn-block btn-white" %>
         <% end %>
       </div>
