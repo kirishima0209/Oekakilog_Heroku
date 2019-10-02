@@ -39,10 +39,17 @@ class UsersController < ApplicationController
   
   def destroy
     @user = User.find_by(id: params[:id])
-    #binding.pry
-    @user.destroy
+    @posts = Post.find_by(user_id: params[:id])
     flash[:success] = "ユーザーを削除しました"
-    redirect_to root_path
+    
+    if @posts.nil?
+      @user.destroy
+      redirect_to root_path
+    else
+      @posts.destroy
+      @user.destroy
+      redirect_to root_path
+    end  
   end  
   
   private
