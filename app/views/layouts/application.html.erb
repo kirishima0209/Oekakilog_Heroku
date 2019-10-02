@@ -23,10 +23,10 @@
             <%= link_to(current_user.name, user_path(current_user) ) %>
           </li>
           <li>
-            <%= "イラスト投稿" %>
+            <%= link_to("イラスト投稿", new_post_path) %>
           </li>
           <li>
-            <%= "イラスト一覧" %>
+            <%= link_to("イラスト一覧", posts_path) %>
           </li>
           <li>
             <%= link_to("ログアウト", logout_path, {method: :delete}) %>
