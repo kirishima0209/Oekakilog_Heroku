@@ -8,7 +8,7 @@
               <div class="post-left">
                 <div class="img">
                 　<% if post.user.image? %>
-              　　　　<%= image_tag user.image.url %>
+              　　　　<%= image_tag post.user.image.url %>
               　　<% else %>
               　  　  <%= image_tag "/assets/人物アイコン.jpeg" %>
           　　　 　 　<% end %>
