@@ -13,7 +13,9 @@
       <%= link_to("編集", edit_user_path(current_user)) %><br>
       <%= link_to 'ユーザーを削除', user_path(current_user), method: :delete, data:
       { confirm: '本当にユーザーを削除しますか?' } %>
-      <% @user.posts.each do |post| %>
+    </div>  
+ 
+    <% @user.posts.each do |post| %>
       <div class="row">
         <div class="col-md-6 col-md-offset-3">
           <div class="posts-index-item">
