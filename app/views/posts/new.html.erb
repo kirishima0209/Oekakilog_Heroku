@@ -3,11 +3,12 @@
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
         <h1 class="text-center">イラスト投稿</h1>
-          <% @post.errors.full_messages.each do |message| %>
-            <div class="form-error">
-              <%= message %>
-            </div>
-          <% end %>
+        <% @post.errors.full_messages.each do |message| %>
+          <div class="form-error">
+            <%= message %>
+          </div>
+        <% end %>
+          
         <%= form_for @post do |f| %>
           <div class="form-group">
             <%= f.label :title %>
@@ -20,8 +21,8 @@
           </div>
           
           <%= f.submit '投稿', class: 'btn btn-black btn-block' %>
-        </div>  
+        <% end %> 
       </div>
-    <% end %>
+    </div>
   </div> 
 </div>

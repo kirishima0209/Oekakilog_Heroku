@@ -152,7 +152,6 @@ header {
 }
 
 .user {
-  margin-bottom: 20px;
 }
 
 .user img {
@@ -202,8 +201,8 @@ header {
 }
 
 .posts-index-item {
-  background-color: #fff;
   background-color: white;
+  text-align: center;
   overflow: hidden;
   box-shadow: 0 2px 6px #c1ced7;
   margin-top: 20px;
@@ -211,7 +210,7 @@ header {
   border: 1px solid #e6ecf0;
   border-radius: 3px;
   img {
-  width: 100%;
+    width: 100%;
   }
 }
 
@@ -253,4 +252,13 @@ header {
 .post-title {
   text-align: center;
   clear: both;
+}
+
+.post-show {
+  padding-top: 10px;
+  background-color: #fafafa;
+}
+
+.post-show-link {
+  padding-top: 10px;
 }

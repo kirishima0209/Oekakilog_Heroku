@@ -26,6 +26,11 @@ class PostsController < ApplicationController
       redirect_to root_path, danger: 'ログインが必要です'
     end  
   end
+  
+  def show
+    @user = User.find_by(params[:user_id])
+    @post = Post.find(params[:id])
+  end
 
   private
   def post_params
