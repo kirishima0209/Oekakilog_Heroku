@@ -6,17 +6,24 @@ class PostsController < ApplicationController
   end  
   
   def new
-    @post = Post.new
+    if logged_in?
+      @post = Post.new
+    else
+      redirect_to root_path, danger: 'ログインが必要です'
+    end  
   end
   
   def create
-    @post = current_user.posts.new(post_params)
-    
-    if @post.save
-      redirect_to posts_path, success: '投稿に成功しました'
+    if logged_in?
+      @post = current_user.posts.new(post_params)
+      if @post.save
+        redirect_to posts_path, success: '投稿に成功しました'
+      else
+        flash.now[:danger] = '投稿に失敗しました'
+        render :new
+      end  
     else
-      flash.now[:danger] = '投稿に失敗しました'
-      render :new
+      redirect_to root_path, danger: 'ログインが必要です'
     end  
   end
 

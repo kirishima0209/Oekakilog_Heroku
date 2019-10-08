@@ -2,12 +2,21 @@
   <div class="container top-hero-container">
     <h1 class="text-white">おえかきログはあなたのお絵かきの進め方の記録を共有できるサービスです</h1>
     <div class="row">
-      <div class="col-md-offset-3 col-md-3">
-        <%= link_to '新規登録', new_user_path, class: 'btn btn-block btn-white' %>
-      </div>
-      <div class="col-md-3">
-        <%= link_to 'ログイン', login_path,class: 'btn btn-block btn-white' %>
-      </div>
+      <% if logged_in? %>
+        <div class="col-md-offset-3 col-md-3">
+          <%= link_to 'イラスト投稿', new_post_path, class: 'btn btn-block btn-white' %>
+        </div>
+        <div class="col-md-3">
+          <%= link_to 'イラスト一覧', posts_path, class: 'btn btn-block btn-white' %>
+        </div>
+      <% else %>
+        <div class="col-md-offset-3 col-md-3">
+          <%= link_to '新規登録', new_user_path, class: 'btn btn-block btn-white' %>
+        </div>
+        <div class="col-md-3">
+          <%= link_to 'ログイン', login_path,class: 'btn btn-block btn-white' %>
+        </div>
+      <% end %>  
     </div>
   </div>
 </div>

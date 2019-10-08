@@ -18,39 +18,51 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @posts = Post.all
-    #binding.pry
   end  
   
   def edit
-    @user = User.find(params[:id])
+    if current_user.id == params[:id].to_i
+      @user = User.find(params[:id])
+    else 
+      flash[:danger] = "権限がありません"
+      redirect_to posts_path
+    end    
   end  
   
   def update
-    @user = User.find(params[:id])
-    #binding.pry
-    if @user.update(user_params)
-      redirect_to user_path(@user)
-      flash[:success] = 'ユーザー情報を編集しました。'
-    else
-      #binding.pry
-      flash.now[:danger] = 'ユーザー情報の編集に失敗しました。'
-      render :edit
-    end  
+    if current_user.id == params[:id].to_i
+      @user = User.find(params[:id])
+      if @user.update(user_params)
+        redirect_to user_path(@user)
+        flash[:success] = 'ユーザー情報を編集しました。'
+      else
+        flash.now[:danger] = 'ユーザー情報の編集に失敗しました。'
+        render :edit
+      end  
+    else 
+      flash[:danger] = "権限がありません"
+      redirect_to posts_path
+    end   
   end  
   
   def destroy
-    @user = User.find_by(id: params[:id])
-    @posts = Post.find_by(user_id: params[:id])
-    flash[:success] = "ユーザーを削除しました"
-    
-    if @posts.nil?
-      @user.destroy
-      redirect_to root_path
-    else
-      @posts.destroy
-      @user.destroy
-      redirect_to root_path
-    end  
+    if current_user.id == params[:id].to_i
+      @user = User.find_by(id: params[:id])
+      @posts = Post.find_by(user_id: params[:id])
+      flash[:success] = "ユーザーを削除しました"
+      
+      if @posts.nil?
+        @user.destroy
+        redirect_to root_path
+      else
+        @posts.destroy
+        @user.destroy
+        redirect_to root_path
+      end  
+    else 
+      flash[:danger] = "権限がありません"
+      redirect_to posts_path
+    end    
   end  
   
   private

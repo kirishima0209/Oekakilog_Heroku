@@ -207,9 +207,12 @@ header {
   overflow: hidden;
   box-shadow: 0 2px 6px #c1ced7;
   margin-top: 20px;
-  padding-bottom: 20px;
+  padding: 0px 10px 20px 10px;
   border: 1px solid #e6ecf0;
   border-radius: 3px;
+  img {
+  width: 100%;
+  }
 }
 
 .post-left img {
@@ -250,8 +253,4 @@ header {
 .post-title {
   text-align: center;
   clear: both;
-}
-
-.post-img {
-  text-align: center;
 }
