@@ -24,7 +24,9 @@
           </h3>
             <%= image_tag @post.image.url %>
           <div class="post-show-link">
-            <%= "手順を追加" %><br>
+            <%= link_to new_post_post_detail_path(post_id: @post.id) do %>
+              <%= "手順を追加" %><br>
+            <% end %>
             <%= "投稿を削除" %>
           </div>
         </div>

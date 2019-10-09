@@ -62,6 +62,15 @@ h1, h2 {
   height: 45px;
 }
 
+.form-control-2 {
+  width: 100%;
+  height: 90px;
+}
+
+textarea {
+  resize: none;
+}
+
 .users-new-wrapper {
   width: 100vw;
   height: 130vh;
@@ -261,4 +270,32 @@ header {
 
 .post-show-link {
   padding-top: 10px;
+}
+
+.drawing-process-heading {
+  padding: 10px 0px 15px;
+  text-align: center;
+}
+
+.drawing-process-image {
+  width: 70%;
+  margin: 0 auto;
+  }
+  
+.drawing-process-explanation {
+  width: 80%;
+  margin: 10px auto 0px;
+}  
+
+.txt {
+  display: inline-block;
+  text-align: left;
+  }
+  
+.drawing-process-index {
+  margin: 0 auto;
+}  
+
+.drawing-process-delete {
+  margin: 5px 0 15px;
 }

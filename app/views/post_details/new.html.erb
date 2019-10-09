@@ -1,0 +1,50 @@
+<div class="main post-show">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="posts-index-item">
+          <h3 class="post-title">
+            <%= @post.title %>
+          </h3>
+          <%= image_tag @post.image.url %>
+        </div>
+        <div class="posts-index-item">
+          <h4 class="drawing-process-heading">
+            <%= "絵を描く手順を追加" %>
+          </h4>
+          <% @post.post_details.each_with_index do |post_detail, i| %>
+            <h4 class="drawing-process-index">
+              <%= "#{i+1}" %>
+            </h4>
+            <div class="drawing-process-image">
+              <%= image_tag post_detail.image.url %>
+            </div>
+            <div class="drawing-process-explanation">
+              <div class="txt">
+                <%= post_detail.content %>
+              </div>  
+            </div>
+            <div class="drawing-process-delete">
+              <%= link_to "この途中手順を削除",post_post_detail_path, method: :delete, data:
+              { confirm: 'この途中手順を削除しますか?' } %>
+            </div>
+          <% end %>
+          
+          <%= form_for @post_detail, url: post_post_details_path do |f| %>
+            <div class="form-group">
+              <%= f.label :途中手順の画像ファイルを選択 %>
+              <%= f.file_field :image %>
+            </div>
+            
+            <div class="form-group">
+              <%= f.label :手順の説明 %>
+              <%= f.text_area :content, class: 'form-control-2' %>
+            </div>
+            
+            <%= f.submit '手順を追加', class: 'btn btn-black btn-block' %>
+          <% end %>   
+        </div>  
+      </div>
+    </div>
+  </div>  
+</div>
