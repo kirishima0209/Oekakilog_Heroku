@@ -2,7 +2,6 @@ class PostsController < ApplicationController
   
   def index
     @posts = Post.all
-    @users = User.all
   end  
   
   def new
@@ -28,10 +27,21 @@ class PostsController < ApplicationController
   end
   
   def show
-    @user = User.find_by(params[:user_id])
     @post = Post.find(params[:id])
+    #binding.pry
   end
-
+  
+  def destroy
+    @post = Post.find_by(id: params[:id])
+    if current_user.id == @post.user_id
+      @post.destroy
+      flash[:success] = "イラストを削除しました"
+      redirect_to posts_path
+    else
+      redirect_to posts_path, danger: '権限がありません'
+    end  
+  end  
+  
   private
   def post_params
     params.require(:post).permit(:title, :image)

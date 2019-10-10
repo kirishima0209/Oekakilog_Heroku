@@ -7,11 +7,11 @@
             <div class="post-left">
               <div class="img">
               　<% if @post.user.image? %>
-            　　　　<%= image_tag @post.user.image.url %>
+                  <%= image_tag @post.user.image.url %>
             　　<% else %>
-            　  　  <%= image_tag "/assets/人物アイコン.jpeg" %>
-        　　　 　 　<% end %>
-              </div> 
+                  <%= image_tag "/assets/人物アイコン.jpeg" %>
+                <% end %>
+              </div>
             </div>
             <div class="post-right">
               <h4 class="post-user-name">
@@ -23,13 +23,38 @@
             <%= @post.title %>
           </h3>
             <%= image_tag @post.image.url %>
-          <div class="post-show-link">
-            <%= link_to new_post_post_detail_path(post_id: @post.id) do %>
-              <%= "手順を追加" %><br>
-            <% end %>
-            <%= "投稿を削除" %>
-          </div>
+          <% if @post.user_id == current_user.id %> 
+            <div class="post-show-link">
+              <%= link_to new_post_post_detail_path(post_id: @post.id) do %>
+                <%= "手順を追加" %><br>
+              <% end %>
+              <%= link_to '投稿を削除', post_path(params[:id]), method: :delete, data:
+              { confirm: '本当に投稿を削除しますか?' } %>
+            </div>
+          <% end %>  
         </div>
+        <% if @post.post_details.present?  %>
+          <div class="posts-index-item">
+            <% @post.post_details.each_with_index do |post_detail, i| %>
+              <% if i == 0 %>
+                <h4 class="drawing-process-heading-2">
+                <%= "描く手順" %>
+                </h4>
+              <% end %>  
+              <h4 class="drawing-process-index">
+                <%= "#{i+1}" %>
+              </h4>
+              <div class="drawing-process-image">
+                <%= image_tag post_detail.image.url %>
+              </div>
+              <div class="drawing-process-explanation">
+                <div class="txt">
+                  <%= post_detail.content %>
+                </div>  
+              </div>
+            <% end %>
+          </div>
+        <% end %>  
       </div>
     </div>
   </div>  

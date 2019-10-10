@@ -93,6 +93,7 @@ textarea {
 
 .form-error {
   color: #ff4d75;
+  text-align: center;
 }
 
 .alert {
@@ -194,6 +195,7 @@ header {
 .btn-black {
   color: #565656;
   border: 1px solid #565656;
+  margin-top: 10px;
   padding-top: 15px;
   padding-bottom: 15px;
   font-size: 20px;
@@ -269,11 +271,16 @@ header {
 }
 
 .post-show-link {
-  padding-top: 10px;
+  padding-top: 15px;
 }
 
 .drawing-process-heading {
-  padding: 10px 0px 15px;
+  padding: 10px 0px 10px;
+  text-align: center;
+}
+
+.drawing-process-heading-2 {
+  padding: 10px 0px 5px;
   text-align: center;
 }
 
@@ -284,7 +291,7 @@ header {
   
 .drawing-process-explanation {
   width: 80%;
-  margin: 10px auto 0px;
+  margin: 10px auto 10px;
 }  
 
 .txt {
@@ -298,4 +305,8 @@ header {
 
 .drawing-process-delete {
   margin: 5px 0 15px;
+}
+
+.drawing-process-path {
+  margin: 15px 0 0;
 }

@@ -48,17 +48,9 @@ class UsersController < ApplicationController
   def destroy
     if current_user.id == params[:id].to_i
       @user = User.find_by(id: params[:id])
-      @posts = Post.find_by(user_id: params[:id])
+      @user.destroy
       flash[:success] = "ユーザーを削除しました"
-      
-      if @posts.nil?
-        @user.destroy
-        redirect_to root_path
-      else
-        @posts.destroy
-        @user.destroy
-        redirect_to root_path
-      end  
+      redirect_to root_path
     else 
       flash[:danger] = "権限がありません"
       redirect_to posts_path
