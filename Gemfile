@@ -67,7 +67,8 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'jquery-rails'
 gem 'rails-i18n'
-gem 'jquery-rails'
 gem 'bcrypt'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'kaminari', '~> 0.17.0'
+gem 'kaminari-bootstrap', '~> 3.0.1'
