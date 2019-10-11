@@ -33,7 +33,10 @@
                 <%= post.title %>
               </h3>
               <%= image_tag post.image.url %>
-            <% end %>    
+            <% end %>
+            <div id="favorites_buttons_<%= post.id %>">
+              <%= render partial: 'favorites/favorite', locals: { post: post} %>
+            </div>
           </div>
         <% end %>
         <%= paginate @posts %>

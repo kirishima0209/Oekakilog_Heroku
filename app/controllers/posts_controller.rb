@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   
   def index
     @q = Post.ransack(params[:q])
-    @posts = @q.result.page(params[:page]).per(PER)
+    @posts = @q.result.includes(:favorite_users).page(params[:page]).per(PER)
   end  
   
   def new

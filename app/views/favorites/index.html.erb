@@ -1,0 +1,39 @@
+<div class="main posts-index">
+  <div class="container">
+    <% @favorite_posts.each do |post| %>
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <div class="posts-index-item">
+              <%= link_to user_path(post.user) do %>
+                <div class="post-left">
+                  <div class="img">
+                  　<% if post.user.image? %>
+                　　　　<%= image_tag post.user.image.url %>
+                　　<% else %>
+                　  　  <%= image_tag "/assets/人物アイコン.jpeg" %>
+            　　　 　 　<% end %>
+                  </div> 
+                </div>
+                <div class="post-right">
+                  <h4 class="post-user-name">
+                    <%= post.user.name %><br>
+                  </h4>
+                </div>
+              <% end %>
+              <%= link_to post_path(post.id) do %>
+                <h3 class="post-title">
+                  <%= post.title %>
+                </h3>
+                <%= image_tag post.image.url %>
+              <% end %>
+              <% if post.favorite_users.include?(current_user) %>
+                <%= link_to("いいねを取り消す", favorites_path(post_id: post.id), method: :delete, remote: true) %>
+              <% else %>
+                <%= link_to("いいね", favorites_path(post_id: post.id), method: :post, remote: true) %>
+              <% end %>  
+            </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>  
