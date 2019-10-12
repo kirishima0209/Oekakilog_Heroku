@@ -12,7 +12,8 @@
           </div>  
           <h2><%= @user.name %></h2>
           <p><%= @user.email %></p>
-          <% if @user.id == current_user.id %> 
+          <%= link_to("いいねしたイラスト一覧", favorites_index_path(id: params[:id])) %><br>
+          <% if @user.id == current_user.id %>
             <%= link_to("編集", edit_user_path(current_user)) %><br>
             <%= link_to 'ユーザーを削除', user_path(current_user), method: :delete, data:
             { confirm: '本当にユーザーを削除しますか?' } %>
@@ -39,6 +40,9 @@
                 <%= post.title %>
               </h3>
               <%= image_tag post.image.url %>
+              <div id="favorites_buttons_<%= post.id %>">
+                <%= render partial: 'favorites/favorite', locals: { post: post} %>
+              </div>
             <% end %>   
           </div>
         <% end %>

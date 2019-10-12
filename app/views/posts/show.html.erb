@@ -22,7 +22,10 @@
           <h3 class="post-title">
             <%= @post.title %>
           </h3>
-            <%= image_tag @post.image.url %>
+          <%= image_tag @post.image.url %>
+          <div id="favorites_buttons_<%= @post.id %>">
+            <%= render partial: 'favorites/favorite', locals: { post: @post} %>
+          </div>
           <% if @post.user_id == current_user.id %> 
             <div class="post-show-link">
               <%= link_to new_post_post_detail_path(post_id: @post.id) do %>

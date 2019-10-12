@@ -29,8 +29,12 @@ class PostsController < ApplicationController
   end
   
   def show
-    @post = Post.find(params[:id])
-    #binding.pry
+    if logged_in?
+      @post = Post.find(params[:id])
+      #binding.pry
+    else
+      redirect_to root_path, danger: '投稿詳細を見るためにはログインが必要です'
+    end  
   end
   
   def destroy
