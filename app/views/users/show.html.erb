@@ -14,9 +14,9 @@
           <p><%= @user.email %></p>
           <%= link_to("いいねしたイラスト一覧", favorites_index_path(id: params[:id])) %><br>
           <% if @user.id == current_user.id %>
-            <%= link_to("編集", edit_user_path(current_user)) %><br>
-            <%= link_to 'ユーザーを削除', user_path(current_user), method: :delete, data:
-            { confirm: '本当にユーザーを削除しますか?' } %>
+            <%= link_to("アカウントを編集", edit_user_path(current_user)) %><br>
+            <%= link_to 'アカウントを削除', user_path(current_user), method: :delete, data:
+            { confirm: '本当にアカウントを削除しますか?' } %>
           <% end %>  
         </div>
         <% @user.posts.each do |post| %>
