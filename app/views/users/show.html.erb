@@ -7,7 +7,7 @@
           　<% if @user.image? %>
         　　　　<%= image_tag @user.image.url %>
         　　<% else %>
-        　　    <%= image_tag "/assets/人物アイコン.jpeg" %>
+              <%= image_tag asset_path("/assets/人物アイコン.jpeg") %>
     　　　   　<% end %>
           </div>  
           <h2><%= @user.name %></h2>
